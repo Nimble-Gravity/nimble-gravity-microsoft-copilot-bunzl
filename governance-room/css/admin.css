@@ -1,0 +1,40 @@
+:root{
+  --bg:#0B1220; --panel:#101a2c; --panel-edge:#1d2a40;
+  --steel:#2A3648; --amber:#E0A93E; --teal:#58C7B4;
+  --paper:#E8ECF2; --slate:#8A97A8; --danger:#E06A5A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--paper);font-family:'IBM Plex Sans',sans-serif;
+  font-size:15px;min-height:100vh}
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;
+  padding:26px 32px;border-bottom:1px solid var(--panel-edge)}
+h1{font-family:'Saira Semi Condensed',sans-serif;text-transform:uppercase;
+  letter-spacing:.1em;font-size:22px}
+h1 span{color:var(--amber)}
+.badge{display:inline-block;margin-top:8px;font-family:'IBM Plex Mono',monospace;
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;
+  border-radius:4px;border:1px solid var(--panel-edge);color:var(--slate)}
+.badge.supabase{color:var(--teal);border-color:rgba(88,199,180,.4)}
+.badge.local{color:var(--amber);border-color:rgba(224,169,62,.4)}
+#meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--slate);text-align:right}
+#meta a{color:var(--teal);text-decoration:none}
+main{padding:26px 32px;max-width:1100px}
+table{width:100%;border-collapse:collapse;background:var(--panel);
+  border:1px solid var(--panel-edge);border-radius:8px;overflow:hidden}
+th{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--slate);text-align:left;padding:12px 14px;
+  border-bottom:1px solid var(--panel-edge)}
+td{padding:11px 14px;border-bottom:1px solid var(--panel-edge);font-size:14px}
+tr:last-child td{border-bottom:none}
+td.mono{font-family:'IBM Plex Mono',monospace;font-size:13px}
+.escaped{color:var(--teal);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em}
+tr.resetting td{opacity:.55}
+td em{color:var(--amber);font-style:normal;font-size:11.5px}
+.actions button{background:transparent;border:1px solid var(--panel-edge);color:var(--paper);
+  font:600 12px 'IBM Plex Sans',sans-serif;padding:6px 10px;border-radius:5px;
+  cursor:pointer;margin-right:6px}
+.actions button:hover{border-color:var(--amber)}
+.actions button[data-act="remove"]:hover{border-color:var(--danger);color:var(--danger)}
+.gate{background:rgba(224,106,90,.08);border:1px solid rgba(224,106,90,.4);
+  color:var(--paper);padding:14px 16px;border-radius:8px;margin-bottom:18px;font-size:14px}
+#empty{color:var(--slate);font-family:'IBM Plex Mono',monospace;padding:30px 0}

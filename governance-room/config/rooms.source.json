@@ -1,0 +1,32 @@
+{
+  "workshopTitle": "Governance Track Capstone: The Compliance Room",
+  "scenario": "Placeholder scenario. A tenant-governance audit fire drill — the real narrative, lab steps, and unlock codes (derived from Bunzl-shaped sample data) are written in Phase D.",
+  "timeLimitMinutes": 20,
+  "hintPenaltySeconds": 60,
+  "rooms": [
+    {
+      "id": "room-1",
+      "title": "Placeholder Station 1",
+      "narrative": "Placeholder — replaced with real Governance-track content in Phase D.",
+      "labSteps": [
+        "Placeholder lab step — Phase D replaces this with a real Copilot admin-portal task."
+      ],
+      "codePlaintext": "PLACEHOLDER1",
+      "codeHash": "GENERATE_WITH_SCRIPT",
+      "hints": ["Placeholder hint."],
+      "skillsTaught": ["Placeholder skill."]
+    },
+    {
+      "id": "room-2",
+      "title": "Placeholder Station 2",
+      "narrative": "Placeholder — replaced with real Governance-track content in Phase D.",
+      "labSteps": [
+        "Placeholder lab step — Phase D replaces this with a real Copilot admin-portal task."
+      ],
+      "codePlaintext": "PLACEHOLDER2",
+      "codeHash": "GENERATE_WITH_SCRIPT",
+      "hints": ["Placeholder hint."],
+      "skillsTaught": ["Placeholder skill."]
+    }
+  ]
+}

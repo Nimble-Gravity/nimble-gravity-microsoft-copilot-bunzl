@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Facilitator — The Compliance Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>The Compliance <span>Room</span> — Facilitator</h1>
+    <span class="badge" id="mode-badge">…</span>
+  </div>
+  <div id="meta">
+    auto-refresh 5s · last: <span id="last-refresh">—</span><br>
+    <a href="index.html">→ game</a>
+  </div>
+</header>
+
+<main>
+  <div class="gate" id="gate" hidden></div>
+  <table id="teams-table" hidden>
+    <thead>
+      <tr>
+        <th>Team</th><th>Room</th><th>Elapsed</th><th>Hints</th>
+        <th>Penalty</th><th>Attempts</th><th>Last seen</th><th></th>
+      </tr>
+    </thead>
+    <tbody id="teams-body"></tbody>
+  </table>
+  <p id="empty" hidden>No teams yet.</p>
+</main>
+
+<script src="config/app-config.js"></script>
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>

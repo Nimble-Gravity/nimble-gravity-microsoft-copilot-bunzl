@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Compliance Room — Module 2 Challenge</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/game.css">
+</head>
+<body>
+
+<div id="scene"></div>
+<div id="vignette"></div>
+
+<div id="hud">
+  <div>
+    <div class="hud-title">The Compliance <span>Room</span></div>
+    <div class="hud-sub">Module 2 · M365 Copilot · Finance Data Challenge</div>
+  </div>
+  <div id="hud-right">
+    <div id="locks"></div>
+    <div id="timer">40:00</div>
+  </div>
+</div>
+
+<aside id="panel">
+  <div id="panel-scroll">
+    <div class="eyebrow" id="room-eyebrow">Room 01</div>
+    <div class="room-title" id="room-title"></div>
+    <p class="narrative" id="room-narrative"></p>
+    <details open>
+      <summary>Lab instructions</summary>
+      <ol class="steps" id="room-steps"></ol>
+    </details>
+    <div class="code-label">Enter unlock code</div>
+    <div id="code-row">
+      <input id="code-input" autocomplete="off" spellcheck="false" placeholder="CODE">
+      <button id="code-btn">Unlock</button>
+    </div>
+    <div id="code-msg"></div>
+    <div class="hint-block" id="hint-block"></div>
+  </div>
+  <div id="panel-foot">
+    <span id="foot-team">—</span>
+    <span id="foot-attempts">Attempts: 0</span>
+  </div>
+</aside>
+
+<div class="overlay hide" id="start-overlay">
+  <div class="overlay-card">
+    <div class="eyebrow">Close briefing</div>
+    <h1>The findings are <em>sealed in</em></h1>
+    <p id="scenario-text"></p>
+    <input id="team-input" placeholder="Enter team name" maxlength="24" autocomplete="off">
+    <button class="big-btn" id="start-btn">Enter the vault</button>
+  </div>
+</div>
+
+<div class="overlay hide" id="escape-overlay">
+  <div class="overlay-card">
+    <div class="eyebrow">Vault cleared</div>
+    <h1>Findings <em>recovered</em></h1>
+    <div id="escape-stats"></div>
+    <div class="eyebrow teal">What you proved today</div>
+    <ul class="recap" id="recap-list"></ul>
+    <div class="eyebrow">Leaderboard</div>
+    <ol class="lb" id="lb-list"></ol>
+    <div class="lb-note" id="lb-note"></div>
+    <button class="big-btn" id="again-btn">Reset &amp; run again</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="config/app-config.js"></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
