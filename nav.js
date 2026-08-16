@@ -5,92 +5,40 @@
   // `filePrefix` is used to detect which module is active on a given page.
   var CRAFTS = [
     {
-      id: 'm1',
+      id: 'foundations',
       folder: 'training',
-      hub: 'pages/workshops/module-1-workshop.html',
-      label: 'Module 1',
-      subLabel: 'Foundations & Copilot Chat',
+      hub: 'pages/workshops/foundations-workshop.html',
+      label: 'Foundations',
+      subLabel: 'M365 Copilot Essentials',
       color: '#2f6b66',
       navColor: '#4f9990',
-      filePrefix: ['01-', '02-', '03-'],
-      pages: [
-        '01-the-copilot-landscape',
-        '02-prompt-like-an-analyst',
-        '03-grounded-chat-lab'
-      ],
-      labels: [
-        'The Copilot Landscape',
-        'Prompt Like an Analyst',
-        'Chat Sprint Lab'
-      ]
+      filePrefix: ['foundations-01-'],
+      pages: ['foundations-01-overview'],
+      labels: ['Foundations Overview']
     },
     {
-      id: 'm2',
+      id: 'advanced',
       folder: 'training',
-      hub: 'pages/workshops/module-2-workshop.html',
-      label: 'Module 2',
-      subLabel: 'Copilot in the Apps',
+      hub: 'pages/workshops/advanced-workshop.html',
+      label: 'Advanced',
+      subLabel: 'Agents, Cowork & Copilot Studio',
       color: '#8c47e4',
       navColor: '#c4b5fd',
-      filePrefix: ['04-', '05-', '06-', '07-'],
-      pages: [
-        '04-excel-copilot',
-        '05-outlook-teams-copilot',
-        '06-word-powerpoint-copilot',
-        '07-close-package-lab'
-      ],
-      labels: [
-        'Excel + Copilot',
-        'Outlook & Teams',
-        'Word & PowerPoint',
-        'Close-Package Lab'
-      ]
+      filePrefix: ['advanced-01-'],
+      pages: ['advanced-01-overview'],
+      labels: ['Advanced Overview']
     },
     {
-      id: 'm3',
+      id: 'governance',
       folder: 'training',
-      hub: 'pages/workshops/module-3-workshop.html',
-      label: 'Module 3',
-      subLabel: 'The Researcher Agent',
+      hub: 'pages/workshops/governance-workshop.html',
+      label: 'Governance',
+      subLabel: 'Admin, Risk & Oversight',
       color: '#2b6880',
       navColor: '#7dd3e8',
-      filePrefix: ['08-', '09-', '10-', '11-'],
-      pages: [
-        '08-meet-researcher',
-        '09-briefing-researcher',
-        '10-researcher-for-finance',
-        '11-researcher-mission-lab'
-      ],
-      labels: [
-        'Meet Researcher',
-        'Briefing Researcher',
-        'Researcher for Finance',
-        'Researcher Mission'
-      ]
-    },
-    {
-      id: 'm4',
-      folder: 'training',
-      hub: 'pages/workshops/module-4-workshop.html',
-      label: 'Module 4',
-      subLabel: 'Analyst & The Close Room',
-      color: '#e8a317',
-      navColor: '#f2c56b',
-      filePrefix: ['12-', '13-', '14-', '15-', '16-'],
-      pages: [
-        '12-meet-analyst',
-        '13-analyst-on-finance-data',
-        '14-choosing-your-copilot',
-        '15-make-it-stick',
-        '16-the-close-room'
-      ],
-      labels: [
-        'Meet Analyst',
-        'Analyst on Finance Data',
-        'Choosing Your Copilot',
-        'Make It Stick',
-        'The Close Room'
-      ]
+      filePrefix: ['governance-01-'],
+      pages: ['governance-01-overview'],
+      labels: ['Governance Overview']
     }
   ];
 
