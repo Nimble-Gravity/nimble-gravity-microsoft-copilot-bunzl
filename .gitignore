@@ -1,0 +1,3 @@
+tools/sample-files/.venv/
+__pycache__/
+*.pyc
