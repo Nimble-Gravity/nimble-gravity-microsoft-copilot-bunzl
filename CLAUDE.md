@@ -4,17 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What This Is
 
-A **Nimble Gravity** enablement microsite for a **Brown & Brown (finance department)** workshop:
-the **M365 Copilot Advanced Workshop** — one **2-hour, in-person, fully hands-on session** covering
-four modules that take licensed M365 Copilot users beyond the basics: Copilot Chat mastery →
-Copilot in the apps (Excel, Outlook, Word, PowerPoint, Teams) → the **Researcher** agent → the
-**Analyst** agent + a capstone simulation. No build step, no framework, no package manager.
+A **Nimble Gravity** enablement microsite for **Bunzl** (a global distribution and
+outsourcing group): the **M365 Copilot for Bunzl** program — three independent, virtual,
+recorded sessions for general/cross-functional Bunzl team members. **Foundations** (2 hours,
+repeated on a recurring cadence) covers core M365 Copilot; **Advanced** (2 hours, champions
+and SMEs) covers Agent Build, Copilot Cowork, and Copilot Studio; **Governance** (1 hour, IT
+and compliance leaders) covers tenant controls and oversight. No build step, no framework, no
+package manager.
 
-The framework (nav, footer, design system, slide engine, page template) was forked from an earlier
-workshop template (previous content: Claude Cowork training for Axos — see git history). The Copilot
-content is grounded in `copilot-context.md` — the subject brief holding all researched Microsoft and
-Brown & Brown facts (verified 2026-07-31), the program design, and the re-verify list.
-**Read it before writing or revising any content.**
+The framework (nav, footer, design system, slide engine, page template) was forked from an
+earlier workshop template (previous content: Claude Cowork training for Axos, then the M365
+Copilot Advanced Workshop for Brown & Brown — see git history). The Bunzl content is grounded
+in `bunzl-context.md` — the subject brief holding all researched Bunzl and Microsoft facts,
+the program design, and the re-verify list. **Read it before writing or revising any content.**
 
 To run locally:
 ```bash
@@ -32,18 +34,19 @@ python -m http.server
 ```
 index.html              — Homepage (hero + module cards + how-it-runs)
 nav.js                  — Self-contained top-nav component (IIFE; injects its own CSS; CRAFTS manifest)
-footer.js               — Self-contained footer (NG wordmark + program blurb + module chips)
+footer.js               — Self-contained footer (NG wordmark + program blurb + track chips)
 training-sidebar.js     — Left module/lesson sidebar for training pages (MODULES manifest)
-interactive.js          — Quizzes (QUIZZES m1–m4), maturity poll, progress/certificate, ack gate
+interactive.js          — Quizzes (QUIZZES foundations/advanced/governance), maturity poll, per-track progress/certificate, ack gate
 styles/shared.css       — Shared design system: tokens plus cross-page layout/components
 DESIGN-SYSTEM.md        — Layout/spacing rules + "How slides are generated" (card classes)
-copilot-context.md      — Subject brief: M365 Copilot facts, Brown & Brown facts, program design
-session-script.md       — The single 2-hour session script ([SAY]/[DO] spine)
-pages/training/*.html   — 16 lessons + 4 slide decks + slide engine + theme
-escape-room/            — "The Variance Vault" — Module 2's take-home data challenge (own README)
-control-room/           — "The Close Room" — Module 4's capstone close simulation (same engine, own README)
-pages/workshops/*.html  — Module hubs + portal pages (agenda, pre-work, resources, FAQ, cheat sheet, etc.)
-assets/lab-data/        — Synthetic B&B-shaped finance datasets (generated, deterministic; see its README)
+bunzl-context.md        — Subject brief: Bunzl and M365 Copilot facts, program design
+session-script.md       — Facilitator session script ([SAY]/[DO] spine)
+pages/training/*.html   — Per-track lessons + slide decks + slide engine + theme
+escape-room/            — "The Loading Dock" — Foundations capstone (own README)
+control-room/           — "The Automation Floor" — Advanced capstone (same engine, own README)
+governance-room/        — "The Compliance Room" — Governance capstone (same engine, own README)
+pages/workshops/*.html  — Track hubs + portal pages (agenda, pre-work, resources, FAQ, cheat sheet, etc.)
+assets/lab-data/        — Synthetic, Bunzl-shaped sample files (generated, deterministic; see its README)
 ```
 
 **Every page** follows this structure: `<link>` to shared.css → `<style>` block for page-specific CSS →
@@ -51,32 +54,37 @@ assets/lab-data/        — Synthetic B&B-shaped finance datasets (generated, de
 `interactive.js` only on pages with quiz/poll/progress/ack mounts) at the start of `<body>` → one
 primary intro pattern (`hero` or `page-header`) → section divs → page-footer div → optional inline script.
 
-**The module manifest is duplicated in several places — keep them in sync** when adding/renaming/
-reordering lessons: the `CRAFTS` array in `nav.js` (the `filePrefix[]` plus the positionally-zipped
-`pages[]`/`labels[]`; each craft also carries a `hub`), the `MODULES` array in `training-sidebar.js`,
-the `window.SLIDES_CFG` in each `pages/training/module-N-slides.html`, the footer module chips in
-`footer.js`, the `module-strip` block duplicated at the top of every lesson, the `.module-grid` cards
-inside each hub's `#content` stage, and the four quiz links on `my-progress.html`. Display order =
-array order, not filename order; always add a new numeric prefix to the owning module's `filePrefix[]`
-in `nav.js` or the page renders with an empty sub-nav. See `CLIENT-CUSTOMIZATION.md`.
+**The track manifest is duplicated in several places — keep them in sync** when adding/renaming/
+reordering tracks or lessons: the `CRAFTS` array in `nav.js` (the `filePrefix[]` plus the
+positionally-zipped `pages[]`/`labels[]`; each craft also carries a `hub`), the `MODULES` array in
+`training-sidebar.js`, the `window.SLIDES_CFG` in each `pages/training/<track>-slides.html`, the
+footer track chips in `footer.js`, the `module-strip` block duplicated at the top of every lesson,
+the `.module-grid` cards inside each hub's `#content` stage and on `index.html`, and the three
+track certificate mounts on `my-progress.html`. Display order = array order, not filename order;
+always add a new lesson's numeric prefix to the owning track's `filePrefix[]` in `nav.js` or the
+page renders with an empty sub-nav. See `CLIENT-CUSTOMIZATION.md`.
 
-**Navigation model:** the top nav's `Module 1–4` labels link to the module **hubs** (`CRAFTS[n].hub`);
-the nav sub-row shows each hub's two stages (`MODULE_STAGES` → `#prework`/`#content` anchors). The
-knowledge check is the animated `data-ix-quiz` component (keys `m1–m4`, pass 3/3/3/4) at the end of
-each module's lab lesson (`03/07/11/16`), feeding the certificate on `my-progress.html` (localStorage
-key `ng-copilot:v1`). See DESIGN-SYSTEM.md "The module hub spine".
+**Navigation model:** the top nav's track labels (Foundations/Advanced/Governance) link to each
+track's **hub** (`CRAFTS[n].hub`); the nav sub-row shows each hub's two stages (`MODULE_STAGES` →
+`#prework`/`#content` anchors). Each track's knowledge check is the animated `data-ix-quiz`
+component (keys `foundations`/`advanced`/`governance`) at the end of that track's lab/capstone
+lesson, feeding an **independent** certificate on `my-progress.html` (`data-ix-certificate`,
+gated by `progress-model.js`; localStorage key `ng-copilot:v1`) — passing one track never gates
+another's certificate. See DESIGN-SYSTEM.md "The track hub spine".
 
-**Slides build themselves from lesson HTML.** A deck file (`module-N-slides.html`) is just a
+**Slides build themselves from lesson HTML.** A deck file (`<track>-slides.html`) is just a
 `window.SLIDES_CFG`; `slides-engine.js` fetches each listed lesson and extracts slides from known card
 classes (all cards, full text — overflowing slides auto-shrink to fit; a section without
 `h2.sec-title` generates no slide — that's how quiz sections stay off decks). See DESIGN-SYSTEM.md "How slides are generated".
 
-**The two game labs share one engine** (vanilla JS + Three.js). Content lives in each app's
-`config/rooms.source.json`; unlock codes are **derived from `assets/lab-data/` contents** — if the
-datasets change, re-derive the codes and run `node tools/generate-hashes.mjs` in each app. Answer keys
-and derivation formulas live in each app's README. The datasets are generated by a seeded script;
-regenerate only deliberately, updating the codes and the facilitator guide's planted-finding notes
-together.
+**The three game labs share one engine** (vanilla JS + Three.js): `escape-room/` (Foundations
+capstone), `control-room/` (Advanced capstone), and `governance-room/` (Governance capstone).
+Content lives in each app's `config/rooms.source.json`; unlock codes are **derived from
+`assets/lab-data/` contents** — if the datasets change, re-derive the codes and run
+`node tools/generate-hashes.mjs` in each app. Answer keys and derivation formulas live in each
+app's README. The datasets are generated by the Python tool in `tools/sample-files/`;
+regenerate only deliberately, updating the codes and the facilitator guide's planted-finding
+notes together.
 
 ## CSS Conventions
 
@@ -86,42 +94,38 @@ together.
 - Shared editorial card grids stretch cards to the tallest sibling (grid `align-items: stretch`, `height: 100%` children, internal stack pattern).
 - Page-specific class names are scoped by page unless the pattern is intentionally shared.
 - Dark sections use `var(--navy)` background; text flips to `var(--white)` / `var(--slatel)` / `var(--mint-on-dark)`.
-- Module accents: M1 `var(--teal)` · M2 `var(--violet)` · M3 `var(--blueD)` · M4 `var(--amber)` (use `--amber-accessible` for amber text on white).
+- Track accents: Foundations `var(--teal)` · Advanced `var(--violet)` · Governance `var(--blueD)`.
 - Do not add a second standalone header bar beneath the global nav when a page already has a hero or page-header. No top-of-page reading-progress strips. Reuse the shared badge language for chips/tags.
 
 ## Domain Context
 
-The audience is **Brown & Brown finance teammates** (accounting, FP&A, treasury, deal support) —
-every attendee holds an M365 Copilot license and brings a laptop; labs are follow-along, on the
-**synthetic datasets in `assets/lab-data/`** (deterministic, fictional, Copilot-safe — never real
-client or deal data). Tone is practitioner-to-practitioner; say **"teammates," never "employees"**;
-frame Copilot as absorbing the post-Accession integration workload — never as commentary on company
-performance.
+The audience is **general/cross-functional Bunzl team members** — every attendee holds an M365
+Copilot license; sessions are **virtual and recorded**, with capacity-capped registration
+handled by a separate Nimble Gravity registration platform (this site links out, never
+implements registration). Sample files use **synthetic, Bunzl-shaped knowledge-worker
+scenarios** (`assets/lab-data/`, see its README) — deterministic, fictional, Copilot-safe, never
+real Bunzl data. Tone is practitioner-to-practitioner; use Bunzl's own preferred term for its
+people (confirmed in `bunzl-context.md` §1) — never invent a term.
 
-The 4-module arc (one 2-hour session; ~25 min in-room per module; depth on the lesson pages):
+The 3-track program (each track is its own independent virtual, recorded session):
 
-1. **Foundations & Copilot Chat** — the surface map (Chat/apps/agents, grounding as signals —
-   Work IQ, prompt, files, sources cited, agent — not a Work/Web toggle, plus the data rules incl.
-   the agent eDiscovery nuance); the four-element prompt framework (Goal, Context,
-   Expectations, Source); the Chat Sprint lab, which also **commissions the Researcher run early**
-   (runs take 10–45 min — timing is the skill).
-2. **Copilot in the Apps** — Excel first (Python analysis, Plan with Copilot, Show Changes
-   attribution, the finance skills library, data connectors), then Outlook/Teams/Word/PowerPoint
-   quick hits; the Close-Package lab; take-home: **The Variance Vault**.
-3. **The Researcher Agent** — what it is (model-picker modes, 25-query shared pool, limitations),
-   briefing craft (engage the clarifying questions), finance missions (deal diligence, carrier
-   economics, reporting calendar); the Researcher Mission lab reviews the run from Module 1.
-4. **Analyst & The Close Room** — Analyst (chain-of-thought, visible Python, multi-file) vs Excel
-   Copilot; the choose-your-Copilot decision framework + governance overlay; Make It Stick habits;
-   capstone: **The Close Room** simulation.
+1. **Foundations** (2 hours, recurring cadence) — M365 Copilot essentials: what Premium adds
+   over free Copilot Chat, Work IQ and grounding explained simply, everyday Chat and app basics.
+   Take-home capstone: **The Loading Dock**.
+2. **Advanced** (2 hours, champions/SMEs) — Agent Build (reusable tasks), delegating to Copilot
+   Cowork, and Copilot Studio. Take-home capstone: **The Automation Floor**.
+3. **Governance** (1 hour, IT/security/compliance leaders) — tenant controls, visibility and
+   auditing, and agent governance. Take-home capstone: **The Compliance Room**.
 
 Guidelines for content:
 
-- **Facts come from `copilot-context.md` only** — Microsoft product facts and Brown & Brown company
-  facts are researched and date-stamped (2026-07-31). Re-verify the §6 list before each delivery
-  (the 25-query cap, model names, Excel skills GA, prices, latest B&B quarter).
-- Every lab is **hands-on and produces a deliverable** on the synthetic data.
+- **Facts come from `bunzl-context.md` only** — Bunzl company facts and Microsoft product facts
+  are researched and date-stamped. Re-verify the flagged re-verify list before each delivery
+  (Copilot Studio's and Cowork's consumption/pricing mechanics move weekly).
+- Every lab is **hands-on and produces a deliverable** on the synthetic sample data.
+- **Never commit real Bunzl specifics** (names, dollar/credit figures, internal pain points from
+  any discovery call) — content generalizes them. See `bunzl-context.md` §1.
 - `SCAFFOLD` / `TODO` markers flag where tenant-specific confirmation or NG IP drops in (what's
-  enabled in B&B's tenant: Anthropic models, Frontier, Finance agent, scheduled prompts).
-- **Date-sensitive** — M365 Copilot ships monthly; anything claiming a capability should carry its
-  date stamp from the context brief.
+  enabled in Bunzl's tenant: which agents, which connectors, current Copilot Studio/Cowork tier).
+- **Date-sensitive** — M365 Copilot, Copilot Studio, and Cowork all ship/change frequently;
+  anything claiming a capability should carry its date stamp from `bunzl-context.md`.
