@@ -23,7 +23,15 @@ Rules:
 - Keep the generic placeholder content meaningful — the template must read well with no client applied.
 - To find every slot in the repo: `grep -rn 'data-client-slot' .`
 
-### Current slots (Brown & Brown Copilot build, 2026-07)
+### Historical slots (Brown & Brown Copilot build, 2026-07 — not part of the live Bunzl site)
+
+> The current engagement (Bunzl, 2026-08) did not follow the branch-per-client model above — it
+> replaced content directly on `main`, matching the same precedent set by the prior
+> Axos→Brown & Brown transition. The `data-client-slot` slots below lived on B&B-era portal
+> pages (`acceptable-use.html`, `faq.html`, `feedback.html`, `syllabus.html`, `why-copilot.html`)
+> that still exist on disk but are no longer linked from the live Bunzl site as of Phase A (see
+> `pages/workshops/coming-soon.html`, which now stands in for them). Re-populate this table once
+> Bunzl's real portal pages are written in Phase B/C/D.
 
 | Key | File | What to replace |
 |---|---|---|
@@ -39,7 +47,7 @@ Add new slots as the engagement needs them; record each one in this table.
 
 ## Other swappable assets
 
-- **Lab data** (`assets/lab-data/`): the synthetic finance datasets are B&B-shaped but fictional; a different client gets regenerated data. ⚠️ The Variance Vault and Close Room unlock codes are **derived from this data** — re-derive codes and re-run `node tools/generate-hashes.mjs` in `escape-room/` and `control-room/` after any change.
+- **Lab data** (`assets/lab-data/`): as of Phase A this is a mix — 3 new generic Bunzl `.xlsx`/`.pptx`/`.docx` files (from `tools/sample-files/`, not yet used by any lab) alongside the legacy B&B CSVs that `escape-room/`'s and `control-room/`'s *current* puzzles still read. ⚠️ Those two apps' unlock codes are **derived from the legacy CSVs**, not the new Bunzl files — re-derive codes and re-run `node tools/generate-hashes.mjs` in `escape-room/`, `control-room/`, and `governance-room/` after any change to either dataset.
 - **Discovery checklist** (`pages/customization/discovery-checklist.html`): run before the engagement; its answers drive which slots get filled.
 - **Footer kicker / hero copy** (`footer.js`, `index.html`): light brand framing only.
 
@@ -48,10 +56,10 @@ Add new slots as the engagement needs them; record each one in this table.
 This is the one cross-cutting gotcha. The lesson list is duplicated in several places and they drift silently:
 1. `nav.js` → `CRAFTS[n]` (`filePrefix[]` + positionally-zipped `pages[]` / `labels[]`)
 2. `training-sidebar.js` → `MODULES[n].lessons[]`
-3. `pages/training/module-N-slides.html` → `window.SLIDES_CFG.lessons[]`
-4. `footer.js` → module chips (only if a module *name* changes)
+3. `pages/training/<track>-slides.html` → `window.SLIDES_CFG.lessons[]`
+4. `footer.js` → track chips (only if a track *name* changes)
 5. `index.html` → the `.module-grid` cards
-6. The `module-strip` block at the top of every lesson (first lesson of each module hardcoded)
-7. `pages/workshops/my-progress.html` → the four quiz-lesson links (labs `03/07/11/16`)
+6. The `module-strip` block at the top of every lesson (first lesson of each track hardcoded)
+7. `pages/workshops/my-progress.html` → the three `data-ix-certificate`/quiz-lesson links, one per track
 
-New lessons **append** a new numeric prefix (17+) and are inserted at the right index in each array — display order is array order, not filename order. Always add the new prefix to the owning module's `filePrefix[]` in `nav.js`, or the page renders with an empty sub-nav.
+New lessons **append** a new numeric prefix within their track's own `<track>-NN-slug.html` sequence and are inserted at the right index in each array — display order is array order, not filename order. Always add the new prefix to the owning track's `filePrefix[]` in `nav.js`, or the page renders with an empty sub-nav.

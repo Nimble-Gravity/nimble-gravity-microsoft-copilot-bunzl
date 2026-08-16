@@ -339,7 +339,7 @@
       panel.appendChild(el('div', 'ixq-result-title', passed ? 'You passed!' : 'So close.'));
       panel.appendChild(el('div', 'ixq-result-score', 'You scored ' + score + ' / ' + total + '.'));
       panel.appendChild(el('div', 'ixq-result-sub', passed
-        ? 'Module complete — it now counts toward your certificate.'
+        ? 'Track complete — it now counts toward your certificate.'
         : 'You need ' + pass + ' of ' + total + ' to pass. Give it another go — you’ve got this.'));
 
       var actions = el('div', 'ix-actions');
@@ -388,7 +388,7 @@
     var icon = el('div', 'ix-done-icon' + (saved.passed ? '' : ' fail'), saved.passed ? '✓' : '↻');
     done.appendChild(icon);
     var copy = el('div', 'ix-done-copy');
-    copy.appendChild(el('div', 'ix-done-title', saved.passed ? 'Module complete' : 'Not passed yet'));
+    copy.appendChild(el('div', 'ix-done-title', saved.passed ? 'Track complete' : 'Not passed yet'));
     copy.appendChild(el('div', 'ix-done-sub', 'Your score: ' + saved.score + '/' + saved.total + '.'));
     done.appendChild(copy);
     card.appendChild(done);
@@ -513,7 +513,7 @@
     var card = el('div', 'ix-card');
     card.appendChild(el('div', 'ix-kicker', 'Your progress'));
     card.appendChild(el('div', 'ix-card-title', (prof && prof.name) ? (prof.name + "'s progress") : 'Your progress'));
-    card.appendChild(el('p', 'ix-card-sub', 'Module quizzes you have passed, on this device.'));
+    card.appendChild(el('p', 'ix-card-sub', 'Track quizzes you have passed, on this device.'));
     var rows = el('div', 'ix-prog');
     ProgressModel.trackIds().forEach(function (id) {
       var q = quiz[id];
@@ -622,7 +622,7 @@
       return;
     }
     card.appendChild(el('div', 'ix-card-title', 'Read and acknowledge'));
-    card.appendChild(el('p', 'ix-card-sub', 'Confirm you have read the Rules of the Road before using Copilot on Brown & Brown work. This is a personal acknowledgment stored on your device — not a legal record, and pending official Brown & Brown policy.'));
+    card.appendChild(el('p', 'ix-card-sub', 'Confirm you have read the Rules of the Road before using Copilot on Bunzl work. This is a personal acknowledgment stored on your device — not a legal record, and pending official Bunzl policy.'));
     var prof = getProfile();
     var field = el('div', 'ix-field');
     var input = el('input', 'ix-input');
