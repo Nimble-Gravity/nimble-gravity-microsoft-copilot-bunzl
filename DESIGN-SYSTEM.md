@@ -58,7 +58,7 @@ If a new development section introduces a new card type, match this pattern firs
 Slide decks are **not authored separately** — `pages/training/slides-engine.js` builds a Reveal.js
 deck by fetching each lesson listed in a deck's `window.SLIDES_CFG` and scraping its HTML. Write a
 lesson with the right structure and its slides appear automatically. To add a deck, copy an existing
-`module-N-slides.html` and edit its `SLIDES_CFG` (`label`, `subLabel`, `color`, `lessons[]`).
+`<track>-slides.html` (e.g. `foundations-slides.html`) and edit its `SLIDES_CFG` (`label`, `subLabel`, `color`, `lessons[]`).
 
 What the engine extracts from each lesson:
 
@@ -101,17 +101,32 @@ Notes for authors:
 
 ## Workshop agenda timeline (`.agenda`)
 
-The per-module hubs (`pages/workshops/module-N-workshop.html`) use a small timeline pattern: a vertical list of `.agenda-row`s, each with a `.agenda-time` (left column, with a `<small>` duration), a coloured `.agenda-tag` chip, and an `.agenda-body`. Tag modifiers: `--teach`, `--demo`, `--lab`, `--discuss`, `--break` (no modifier = neutral, for Open / Debrief / Close). Defined in `styles/shared.css`; the tag reuses the badge/chip language. Each hub's rows cover that module's block within the single 2-hour session (times are absolute session times, e.g. Module 3 = 1:05–1:30); the full run of show lives on `syllabus.html`. Pages under `pages/workshops/` are not listed in any `SLIDES_CFG`, so they do not generate slides.
+The per-track hubs (`pages/workshops/<track>-workshop.html`) use a small timeline pattern: a vertical list of `.agenda-row`s, each with a `.agenda-time` (left column, with a `<small>` duration), a coloured `.agenda-tag` chip, and an `.agenda-body`. Tag modifiers: `--teach`, `--demo`, `--lab`, `--discuss`, `--break` (no modifier = neutral, for Open / Debrief / Close). Defined in `styles/shared.css`; the tag reuses the badge/chip language. Each hub's rows cover that track's own session (Foundations and Advanced are each 2 hours; Governance is 1 hour — times are relative to that track's own session start, not a shared clock across tracks). Pages under `pages/workshops/` are not listed in any `SLIDES_CFG`, so they do not generate slides.
 
-## The module hub spine
+## The track hub spine
 
-Each module's **hub** (`pages/workshops/module-N-workshop.html`) is the module's home base, and is the unit the nav "enters" — the top-nav label is **`Module N`** and links to the hub (`CRAFTS[n].hub` in `nav.js`), matching the Home page's module cards. Every hub is organized into the **same two ordered, anchored sections**:
+Each track's **hub** (`pages/workshops/<track>-workshop.html`) is the track's home base, and is
+the unit the nav "enters" — the top-nav label is the track's `label` (e.g. **`Foundations`**)
+and links to the hub (`CRAFTS[n].hub` in `nav.js`), matching the Home page's track cards. Every
+hub is organized into the **same two ordered, anchored sections**:
 
 | Stage | Section `id` | Holds |
 |---|---|---|
-| Pre-work | `#prework` | Before-the-session items (Module 1 also opens with Why Copilot + Rules of the Road); links to `pre-work.html` for the full before/after |
-| Workshop content | `#content` | Objectives → `.agenda` run-of-show → lesson cards + `⊞ Start Presentation` |
+| Pre-work | `#prework` | Before-the-session items; links to `pre-work.html` for the full before/after |
+| Session content | `#content` | Objectives → `.agenda` run-of-show → lesson cards + `⊞ Start Presentation` + take-home capstone link |
 
-`nav.js` exposes these two as the **sub-row** (the navigation bar) via the shared `MODULE_STAGES` array (label + `#hash`), whenever you're on a module's hub **or** one of its lessons. On the hub the sub-row **scroll-spies** the section ids; on a lesson page it marks **Workshop content** active. Keep the two hub `id`s and the `MODULE_STAGES`/`hub` entries in sync.
+`nav.js` exposes these two as the **sub-row** (the navigation bar) via the shared
+`MODULE_STAGES` array (label + `#hash`), whenever you're on a track's hub **or** one of its
+lessons. On the hub the sub-row **scroll-spies** the section ids; on a lesson page it marks
+**Session content** active. Keep the two hub `id`s and the `MODULE_STAGES`/`hub` entries in
+sync.
 
-The **knowledge check** is not on the hub: each module's single `data-ix-quiz` mount (`m1..m4`, feeding the My-progress certificate) lives at the end of its lab/capstone lesson (`03/07/11/16`) and renders as the animated one-question-at-a-time component in `interactive.js`. **Follow-through** lives on the shared `pre-work.html` (anchors `#workshop-1..4`: `#workshop-1` = before the session, the rest = per-module after-session follow-through), which the hubs link to from their Pre-work stage and agenda close.
+The **knowledge check** is not on the hub: each track's `data-ix-quiz` mount (ids
+`foundations`/`advanced`/`governance`) lives at the end of its lab/capstone lesson and renders
+as the animated one-question-at-a-time component in `interactive.js`. Each track's
+certificate is **independent** — passing one track's quiz unlocks only that track's
+certificate on `my-progress.html` (`data-ix-certificate="<track-id>"`); there is no combined
+"complete every track" gate, since most attendees take only one or two tracks. Certificate
+gating logic lives in `progress-model.js` (a small, framework-free module tested with Node's
+built-in `node --test progress-model.test.js`), consumed by `interactive.js`'s
+`renderReadout`/`renderProgress`/`renderCertificate`.
