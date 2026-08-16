@@ -12,12 +12,13 @@
 <body>
 <script src="../../footer.js"></script>
 <script src="../../nav.js"></script>
+<script src="../../progress-model.js"></script>
 <script src="../../interactive.js"></script>
 
 <div class="page-header" id="intro">
-  <div class="eyebrow">Brown &amp; Brown · Copilot Session</div>
+  <div class="eyebrow">Bunzl · M365 Copilot Program</div>
   <h1 class="title">My <em>Progress</em></h1>
-  <p class="subtitle">Track what you've completed across the four modules and unlock your certificate once you've passed all four module quizzes. Everything here is saved on this device only — it's a personal record, not an official Brown &amp; Brown training record.</p>
+  <p class="subtitle">Track your progress on each track you take and unlock that track's certificate once you've passed its quiz. Tracks are independent — you don't need all three. Everything here is saved on this device only — it's a personal record, not an official Bunzl training record.</p>
   <div class="header-phase">
     <div class="header-phase-dot" style="background:var(--teal)"></div>
     Personal · saved on this device
@@ -35,23 +36,24 @@
 <!-- PROGRESS -->
 <div class="section section--off" id="progress">
   <div class="sec-eyebrow">02 — Your progress</div>
-  <h2 class="sec-title">Four modules, four <em>quizzes</em></h2>
-  <p class="sec-sub">Each module's quiz is at the end of its lab. Pass it to mark the module complete.</p>
+  <h2 class="sec-title">Three tracks, three <em>quizzes</em></h2>
+  <p class="sec-sub">Each track's quiz is at the end of its lesson. Pass it to unlock that track's certificate below.</p>
   <div class="ix-progress" data-ix-progress></div>
   <p style="margin-top:20px;display:flex;gap:16px;flex-wrap:wrap;">
-    <a href="../training/03-grounded-chat-lab.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Module 1 · Foundations &amp; Copilot Chat quiz →</a>
-    <a href="../training/07-close-package-lab.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Module 2 · Copilot in the Apps quiz →</a>
-    <a href="../training/11-researcher-mission-lab.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Module 3 · The Researcher Agent quiz →</a>
-    <a href="../training/16-the-close-room.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Module 4 · Analyst &amp; The Close Room quiz →</a>
+    <a href="../training/foundations-01-overview.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Foundations quiz →</a>
+    <a href="../training/advanced-01-overview.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Advanced quiz →</a>
+    <a href="../training/governance-01-overview.html" style="color:var(--teal);text-decoration:none;font-weight:600;font-size:14px;">Governance quiz →</a>
   </p>
 </div>
 
 <!-- CERTIFICATE -->
 <div class="section" id="certificate">
-  <div class="sec-eyebrow">03 — Your certificate</div>
-  <h2 class="sec-title">Finish all four to <em>unlock</em> it</h2>
-  <p class="sec-sub">Once all four module quizzes are passed, your certificate appears here, ready to print or save as a PDF.</p>
-  <div class="ix-certificate" data-ix-certificate></div>
+  <div class="sec-eyebrow">03 — Your certificates</div>
+  <h2 class="sec-title">Unlock each track's <em>certificate</em></h2>
+  <p class="sec-sub">Each certificate unlocks independently, as soon as that track's quiz is passed — ready to print or save as a PDF.</p>
+  <div class="ix-certificate" data-ix-certificate="foundations"></div>
+  <div class="ix-certificate" data-ix-certificate="advanced" style="margin-top:20px;"></div>
+  <div class="ix-certificate" data-ix-certificate="governance" style="margin-top:20px;"></div>
 </div>
 
 <div class="page-footer"></div>

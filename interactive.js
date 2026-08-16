@@ -8,7 +8,7 @@
  * their own answer; the facilitator tallies the room live.
  *
  * Author API (drop a placeholder div; this script fills it):
- *   <div class="ix-quiz" data-ix-quiz="m1" data-ix-pass="3"></div>
+ *   <div class="ix-quiz" data-ix-quiz="foundations" data-ix-pass="3"></div>
  *   <div class="ix-poll" data-ix-poll="maturity"></div>
  *   <div class="ix-readout"></div>
  *
@@ -47,87 +47,32 @@
   function clearAck(id)         { var s = getStore(); if (s.ack) { delete s.ack[id]; setStore(s); } }
   function resetAll()           { try { window.localStorage.removeItem(LS_KEY); } catch (e) {} }
 
-  var MODULE_LABELS = { m1: 'Module 1 · Foundations & Copilot Chat', m2: 'Module 2 · Copilot in the Apps', m3: 'Module 3 · The Researcher Agent', m4: 'Module 4 · Analyst & The Close Room' };
-  function passedCount() { var s = getStore(); var q = s.quiz || {}; var n = 0; ['m1','m2','m3','m4'].forEach(function (m) { if (q[m] && q[m].passed) n++; }); return n; }
   function fmtDate(ts) { var d = ts ? new Date(ts) : new Date(); var m = ['January','February','March','April','May','June','July','August','September','October','November','December']; return m[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear(); }
 
   // ── Content config (questions live here, not in lesson HTML) ────────────────
   var QUIZZES = {
-    m1: {
-      label: 'Module 1 · Foundations & Copilot Chat',
+    foundations: {
+      label: 'Foundations · M365 Copilot Essentials',
       questions: [
-        { q: 'Before trusting a Copilot Chat answer, what should you check first?',
-          options: ['Nothing — a confident answer is a correct answer', 'Where it came from: the sources and citations Copilot used, and whether Work IQ, your prompt, and any attached files actually scoped it to the right place', 'Whether the model is the largest one available'],
-          answer: 1 },
-        { q: 'Which of your organization’s data can Copilot see when it answers you?',
-          options: ['Everything in the tenant, including other teams’ files', 'Only content you already have at least view permission to', 'Only files you created yourself'],
-          answer: 1 },
-        { q: 'Microsoft’s four elements of a strong prompt are…',
-          options: ['Goal, Context, Expectations, Source', 'Persona, Task, Format, Tone', 'Who, What, When, Where'],
-          answer: 0 },
-        { q: 'You want the same variance-commentary prompt to run itself every Monday morning. What do you use?',
-          options: ['A scheduled prompt — any prompt on a recurring schedule, up to 10 per user', 'A macro in Excel', 'You can’t — Copilot prompts are one-off'],
-          answer: 0 }
-      ]
-    },
-    m2: {
-      label: 'Module 2 · Copilot in the Apps',
-      questions: [
-        { q: 'When Copilot in Excel runs a forecast or a statistical analysis, what is it actually doing?',
-          options: ['Guessing from patterns in the visible cells', 'Writing and running Python against your data, right in the workbook', 'Sending the workbook to a human analyst'],
-          answer: 1 },
-        { q: 'How do you verify exactly which cells Copilot changed in a workbook?',
-          options: ['You can’t — you have to diff it by hand', 'The Show Changes pane attributes every edit Copilot made', 'Copilot never edits cells directly'],
-          answer: 1 },
-        { q: 'The fastest route from a set of findings to a structured, on-brand deck is…',
-          options: ['Copy-pasting into a blank deck', 'PowerPoint’s Narrative Builder, referencing your source file and an approved brand template', 'Asking Copilot Chat for slide text and formatting it yourself'],
-          answer: 1 },
-        { q: 'You missed a meeting where the close calendar changed. The best Copilot move is…',
-          options: ['Ask a colleague to retype their notes', 'Open the Teams intelligent recap — AI notes, speaker attribution, and action items', 'Wait for the official minutes next week'],
+        { q: 'What does an M365 Copilot Premium license add that free Copilot Chat does not?',
+          options: ['Nothing — they are the same product', 'Work-grounded Chat against your Microsoft Graph data, plus Copilot inside the M365 apps and the Researcher/Analyst agents', 'Only a different color theme'],
           answer: 1 }
       ]
     },
-    m3: {
-      label: 'Module 3 · The Researcher Agent',
+    advanced: {
+      label: 'Advanced · Agents, Cowork & Copilot Studio',
       questions: [
-        { q: 'Before it starts working, Researcher usually asks you clarifying questions. You should…',
-          options: ['Skip them — the first prompt is all that matters', 'Answer them carefully — engaging with the clarifying phase is Microsoft’s #1 stated best practice', 'Cancel and rewrite the prompt from scratch'],
-          answer: 1 },
-        { q: 'How long can a complex Researcher run take?',
-          options: ['A few seconds, like a chat reply', '10–45 minutes — so kick it off early and keep working', 'It always takes exactly five minutes'],
-          answer: 1 },
-        { q: 'What can Researcher draw on for a report?',
-          options: ['Only the public web', 'Only files you attach', 'The web AND your work data — files, mail, meetings, chats — plus connected third-party sources, scoped per run'],
-          answer: 2 },
-        { q: 'Researcher and Analyst share a usage pool. As of mid-2026 it is…',
-          options: ['Unlimited runs', '25 combined queries per user per month, resetting on the 1st', '5 runs per day'],
+        { q: 'What does delegating a task to Copilot Cowork add over asking Copilot Chat directly?',
+          options: ['Nothing — Cowork is just a rebrand of Chat', 'Cowork can carry out longer, multi-step tasks on your behalf and report back, rather than answering one prompt at a time', 'Cowork can only summarize emails'],
           answer: 1 }
       ]
     },
-    m4: {
-      label: 'Module 4 · Analyst & The Close Room',
+    governance: {
+      label: 'Governance · Admin, Risk & Oversight',
       questions: [
-        { q: 'What is Analyst’s signature capability?',
-          options: ['It formats spreadsheets faster than Excel', 'Chain-of-thought data analysis that writes and runs Python — with the code visible so you can verify the method', 'It replaces the need for a data warehouse'],
-          answer: 1 },
-        { q: 'When do you reach for Analyst instead of Copilot in Excel?',
-          options: ['Never — they are the same feature', 'When the question spans multiple files or needs forecasting/statistics, rather than edits inside one open workbook', 'Only when Excel is not installed'],
-          answer: 1 },
-        { q: 'You need a cited brief on a diligence target that pulls from the data room AND the public web. Which tool?',
-          options: ['Researcher — deep, multi-source research with citations', 'Analyst — it is newer', 'Excel Copilot — everything starts in Excel'],
-          answer: 0 },
-        { q: 'You need a quick formula fix and a chart in the workbook you have open. Which tool?',
-          options: ['Researcher', 'Copilot in Excel — native edits in the open workbook, with change attribution', 'A scheduled prompt'],
-          answer: 1 },
-        { q: 'Feeding Analyst clean, tabular data with clear headers matters because…',
-          options: ['Analyst refuses files with more than one tab', 'Its Python runs against your columns as-is — clean structure in, reliable analysis out', 'It only reads the first 100 rows'],
-          answer: 1 },
-        { q: 'Which is TRUE about how Copilot handles your prompts and data?',
-          options: ['Prompts and responses are used to train the foundation models', 'Prompts, responses, and Graph data are NOT used to train the foundation models', 'Copilot can read any file in the tenant, regardless of permissions'],
-          answer: 1 },
-        { q: 'A compliance nuance your team should know about the agents:',
-          options: ['Researcher and Analyst session content is not covered by eDiscovery by default — save important outputs to files that ARE governed', 'Agent sessions are printed and mailed to Compliance automatically', 'Researcher reports are legally citable audit evidence'],
-          answer: 0 }
+        { q: 'Why does agent governance (Copilot Studio, Cowork) need active oversight rather than a one-time setup?',
+          options: ['It does not — agent settings never change once configured', 'Agent capabilities, licensing, and consumption models change frequently, so visibility and review need to be ongoing', 'Only Microsoft can see what agents are doing, so no local oversight is possible'],
+          answer: 1 }
       ]
     }
   };
@@ -505,10 +450,10 @@
     card.appendChild(el('p', 'ix-card-sub', 'A snapshot of your own progress on this device.'));
 
     var grid = el('div', 'ix-readout-grid');
-    ['m1', 'm2', 'm3', 'm4'].forEach(function (m, i) {
-      var passed = quiz[m] && quiz[m].passed;
+    ProgressModel.trackIds().forEach(function (id) {
+      var passed = ProgressModel.isTrackPassed(quiz, id);
       var pill = el('span', 'ix-pill' + (passed ? ' on' : ''));
-      pill.appendChild(el('span', null, (passed ? '✓ ' : '○ ') + 'Module ' + (i + 1)));
+      pill.appendChild(el('span', null, (passed ? '✓ ' : '○ ') + ProgressModel.trackLabel(id).split(' · ')[0]));
       grid.appendChild(pill);
     });
     card.appendChild(grid);
@@ -570,23 +515,18 @@
     card.appendChild(el('div', 'ix-card-title', (prof && prof.name) ? (prof.name + "'s progress") : 'Your progress'));
     card.appendChild(el('p', 'ix-card-sub', 'Module quizzes you have passed, on this device.'));
     var rows = el('div', 'ix-prog');
-    ['m1', 'm2', 'm3', 'm4'].forEach(function (m) {
-      var q = quiz[m];
-      var passed = q && q.passed;
+    ProgressModel.trackIds().forEach(function (id) {
+      var q = quiz[id];
+      var passed = ProgressModel.isTrackPassed(quiz, id);
       var row = el('div', 'ix-prog-row' + (passed ? ' on' : ''));
       row.appendChild(el('span', 'ix-prog-check', passed ? '✓' : '○'));
-      row.appendChild(el('span', 'ix-prog-label', MODULE_LABELS[m]));
+      row.appendChild(el('span', 'ix-prog-label', ProgressModel.trackLabel(id)));
       row.appendChild(el('span', 'ix-prog-score', q ? (q.score + '/' + q.total) : '—'));
       rows.appendChild(row);
     });
     card.appendChild(rows);
-    var n = passedCount();
-    var bar = el('div', 'ix-bar');
-    var fill = el('div', 'ix-bar-fill');
-    fill.style.width = (n / 4 * 100) + '%';
-    bar.appendChild(fill);
-    card.appendChild(bar);
-    card.appendChild(el('p', 'ix-prog-summary', n + ' of 4 modules complete' + (n === 4 ? ' — certificate unlocked below.' : '.')));
+    var n = ProgressModel.passedTracks(quiz).length;
+    card.appendChild(el('p', 'ix-prog-summary', n + ' of ' + ProgressModel.trackIds().length + ' track certificates unlocked — each track is independent, so you do not need all three.'));
     var actions = el('div', 'ix-actions');
     var reset = el('button', 'ix-btn ix-btn--ghost', 'Clear my data');
     reset.type = 'button';
@@ -596,31 +536,32 @@
     mount.appendChild(card);
   }
 
-  // ── Certificate (client-only; gated on all four module quizzes passed) ──────
-  function buildCertNode() {
+  // ── Certificate (client-only; each track gated independently on its own quiz) ──
+  function buildCertNode(trackId) {
     var prof = getProfile();
     var name = (prof && prof.name) ? prof.name : '';
     var cert = el('div', 'ix-cert');
-    cert.appendChild(el('div', 'ix-cert-eyebrow', 'Nimble Gravity × Brown & Brown · Copilot Enablement'));
+    cert.appendChild(el('div', 'ix-cert-eyebrow', 'Nimble Gravity × Bunzl · Copilot Enablement'));
     cert.appendChild(el('div', 'ix-cert-title', 'Certificate of Completion'));
     cert.appendChild(el('div', 'ix-cert-line', 'This certifies that'));
     cert.appendChild(el('div', 'ix-cert-name', name || 'Your name'));
-    cert.appendChild(el('div', 'ix-cert-line', 'completed the four-module M365 Copilot Advanced Workshop.'));
+    cert.appendChild(el('div', 'ix-cert-line', 'completed the ' + ProgressModel.trackLabel(trackId).split(' · ')[0] + ' track of the M365 Copilot for Bunzl program.'));
     var d = new Date();
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     cert.appendChild(el('div', 'ix-cert-meta', months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear()));
-    cert.appendChild(el('div', 'ix-cert-disclaimer', 'A personal record of completion — not an official Brown & Brown training record.'));
+    cert.appendChild(el('div', 'ix-cert-disclaimer', 'A personal record of completion — not an official Bunzl training record.'));
     return cert;
   }
 
   function renderCertificate(mount) {
     mount.innerHTML = '';
-    var n = passedCount();
-    if (n < 4) {
+    var trackId = mount.getAttribute('data-ix-certificate');
+    var quiz = (getStore().quiz) || {};
+    if (!ProgressModel.isTrackPassed(quiz, trackId)) {
       var locked = el('div', 'ix-locked');
       locked.appendChild(el('div', 'ix-locked-icon', '🔒'));
       locked.appendChild(el('div', 'ix-locked-title', 'Certificate locked'));
-      locked.appendChild(el('div', 'ix-locked-sub', 'Pass all four module quizzes to unlock your certificate — ' + n + ' of 4 done. Each one lives at the end of its module’s lab lesson.'));
+      locked.appendChild(el('div', 'ix-locked-sub', 'Pass the ' + ProgressModel.trackLabel(trackId).split(' · ')[0] + ' quiz to unlock this certificate. It lives at the end of that track’s lesson.'));
       mount.appendChild(locked);
       return;
     }
@@ -631,13 +572,13 @@
     if (!prof || !prof.name) {
       card.appendChild(el('p', 'ix-card-sub', 'Add your name in the profile above to personalize it.'));
     }
-    card.appendChild(buildCertNode());
+    card.appendChild(buildCertNode(trackId));
     var actions = el('div', 'ix-actions');
     var printBtn = el('button', 'ix-btn', 'Print / Save as PDF');
     printBtn.type = 'button';
     printBtn.addEventListener('click', function () {
       var layer = el('div', 'ix-print-layer');
-      layer.appendChild(buildCertNode());
+      layer.appendChild(buildCertNode(trackId));
       document.body.appendChild(layer);
       document.body.classList.add('ix-printing');
       function cleanup() { document.body.classList.remove('ix-printing'); if (layer.parentNode) layer.parentNode.removeChild(layer); window.removeEventListener('afterprint', cleanup); }
