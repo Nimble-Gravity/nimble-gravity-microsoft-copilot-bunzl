@@ -304,9 +304,9 @@
 
   // ── Portal: global links reachable from any page ───────────────────────────
   var PORTAL_LINKS = [
-    { label: 'Resources',   href: 'pages/workshops/resources.html',   file: 'resources.html'   },
+    { label: 'Resources',   href: 'pages/workshops/coming-soon.html', file: 'coming-soon.html' },
     { label: 'My Progress', href: 'pages/workshops/my-progress.html', file: 'my-progress.html' },
-    { label: 'FAQ',         href: 'pages/workshops/faq.html',         file: 'faq.html'         }
+    { label: 'FAQ',         href: 'pages/workshops/coming-soon.html', file: 'coming-soon.html' }
   ];
   PORTAL_LINKS.forEach(function (link) {
     var pDivider = document.createElement('div');
@@ -499,10 +499,10 @@
   portalGroup.appendChild(portalLabel);
 
   [
-    { label: 'Resources',   file: 'resources.html'   },
+    { label: 'Resources',   file: 'coming-soon.html' },
     { label: 'My Progress', file: 'my-progress.html' },
-    { label: 'Syllabus',    file: 'syllabus.html'    },
-    { label: 'FAQ',         file: 'faq.html'         }
+    { label: 'Syllabus',    file: 'coming-soon.html' },
+    { label: 'FAQ',         file: 'coming-soon.html' }
   ].forEach(function (item) {
     var pl = document.createElement('a');
     pl.href = root + 'pages/workshops/' + item.file;
