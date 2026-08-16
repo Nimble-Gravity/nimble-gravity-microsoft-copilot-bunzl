@@ -17,8 +17,8 @@ foodservice; decentralized operating companies; heavy bolt-on-acquisition growth
 This mirrors the prior Brown & Brown engagement's format (a tailored, sustainable microsite —
 "train the trainer," not a one-off deck) but differs in real ways:
 
-- **Audience is general/cross-functional**, not one department. ~400 teammates hold M365
-  Copilot Premium licenses; content and sample files use generic knowledge-worker scenarios
+- **Audience is general/cross-functional**, not one department. A large population of team
+  members hold M365 Copilot Premium licenses; content and sample files use generic knowledge-worker scenarios
   (memos, budgets, decks, reports) grounded in Bunzl's business rather than one function's
   workflows.
 - **Copilot Cowork is genuinely in scope** (unlike the B&B build, where it was named only to
@@ -37,7 +37,7 @@ This mirrors the prior Brown & Brown engagement's format (a tailored, sustainabl
 
 | Track | Audience | Duration | Runs | Content anchor |
 |---|---|---|---|---|
-| **Foundations** | General/cross-functional Copilot Premium license holders (~400 people) | 2 hours | Repeated on a recurring cadence, capacity-capped registration cohorts — **not** a fixed "twice"; scheduling is data, not structure (see §3.1) | M365 Copilot fundamentals: what Premium adds over free Copilot Chat, Work IQ/grounding explained simply, everyday Chat + app basics |
+| **Foundations** | General/cross-functional Copilot Premium license holders (a large population) | 2 hours | Repeated on a recurring cadence, capacity-capped registration cohorts — **not** a fixed "twice"; scheduling is data, not structure (see §3.1) | M365 Copilot fundamentals: what Premium adds over free Copilot Chat, Work IQ/grounding explained simply, everyday Chat + app basics |
 | **Advanced** | Champions/SMEs with (or eligible for) Cowork allowance-group access | 2 hours | Smaller, less frequent cohorts | Agent Build (reusable tasks), Cowork overview and delegation, Copilot Studio |
 | **Governance** | IT/security/compliance leaders (the small admin-access group + AI-strategy stakeholders) | 1 hour | Infrequent, small group | Tenant controls, visibility/auditing, agent governance, data protection, EU data boundary caveat |
 
