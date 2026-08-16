@@ -42,8 +42,10 @@ DESIGN-SYSTEM.md        — Layout/spacing rules + "How slides are generated" (c
 bunzl-context.md        — Subject brief: Bunzl and M365 Copilot facts, program design
 session-script.md       — Facilitator session script ([SAY]/[DO] spine)
 pages/training/*.html   — Per-track lessons + slide decks + slide engine + theme
-escape-room/            — "The Loading Dock" — Foundations capstone (own README)
-control-room/           — "The Automation Floor" — Advanced capstone (same engine, own README)
+escape-room/            — Foundations capstone (own README); still titled "The Variance Vault" from
+                          the prior engagement — rename to "The Loading Dock" is Phase B content work
+control-room/           — Advanced capstone (same engine, own README); still titled "The Close Room"
+                          from the prior engagement — rename to "The Automation Floor" is Phase C content work
 governance-room/        — "The Compliance Room" — Governance capstone (same engine, own README)
 pages/workshops/*.html  — Track hubs + portal pages (agenda, pre-work, resources, FAQ, cheat sheet, etc.)
 assets/lab-data/        — Synthetic, Bunzl-shaped sample files (generated, deterministic; see its README)
