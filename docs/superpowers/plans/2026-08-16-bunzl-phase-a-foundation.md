@@ -1578,9 +1578,10 @@ Guidelines for content:
 - [ ] **Step 8: Verify**
 
 ```bash
-grep -c "Brown & Brown\|module-N-workshop\|M1.*teal.*M2.*violet.*M3.*blueD.*M4" CLAUDE.md
+grep -c "module-N-workshop\|M1.*teal.*M2.*violet.*M3.*blueD.*M4" CLAUDE.md
+grep -n "Brown & Brown" CLAUDE.md
 ```
-Expected: `0` (the one legitimate exception — "then the M365 Copilot Advanced Workshop for Brown & Brown — see git history" in Step 1's history note — means this grep should actually return `1`; if so, confirm the single match is that history reference and not a leftover live-content mention before treating this as a failure).
+Expected: first command outputs `0`. Second command outputs exactly one line, and that line must be the git-history note from Step 1 ("...then the M365 Copilot Advanced Workshop for Brown & Brown — see git history") — any other match is a leftover live-content mention and must be fixed.
 
 - [ ] **Step 9: Commit**
 
