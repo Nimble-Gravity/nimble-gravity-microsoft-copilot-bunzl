@@ -3,51 +3,30 @@
 
   var MODULES = [
     {
-      label: 'Module 1',
-      subLabel: 'Foundations & Copilot Chat',
+      label: 'Foundations',
+      subLabel: 'M365 Copilot Essentials',
       color: '#4f9990',
-      slidesFile: 'module-1-slides.html',
+      slidesFile: 'foundations-slides.html',
       lessons: [
-        { file: '01-the-copilot-landscape.html',  title: 'The Copilot Landscape' },
-        { file: '02-prompt-like-an-analyst.html', title: 'Prompt Like an Analyst' },
-        { file: '03-grounded-chat-lab.html',      title: 'Chat Sprint Lab', exercise: true }
+        { file: 'foundations-01-overview.html', title: 'Foundations Overview', exercise: true }
       ]
     },
     {
-      label: 'Module 2',
-      subLabel: 'Copilot in the Apps',
+      label: 'Advanced',
+      subLabel: 'Agents, Cowork & Copilot Studio',
       color: '#c4b5fd',
-      slidesFile: 'module-2-slides.html',
+      slidesFile: 'advanced-slides.html',
       lessons: [
-        { file: '04-excel-copilot.html',           title: 'Excel + Copilot' },
-        { file: '05-outlook-teams-copilot.html',   title: 'Outlook & Teams' },
-        { file: '06-word-powerpoint-copilot.html', title: 'Word & PowerPoint' },
-        { file: '07-close-package-lab.html',       title: 'Close-Package Lab', exercise: true }
+        { file: 'advanced-01-overview.html', title: 'Advanced Overview', exercise: true }
       ]
     },
     {
-      label: 'Module 3',
-      subLabel: 'The Researcher Agent',
+      label: 'Governance',
+      subLabel: 'Admin, Risk & Oversight',
       color: '#7dd3e8',
-      slidesFile: 'module-3-slides.html',
+      slidesFile: 'governance-slides.html',
       lessons: [
-        { file: '08-meet-researcher.html',         title: 'Meet Researcher' },
-        { file: '09-briefing-researcher.html',     title: 'Briefing Researcher' },
-        { file: '10-researcher-for-finance.html',  title: 'Researcher for Finance' },
-        { file: '11-researcher-mission-lab.html',  title: 'Researcher Mission', exercise: true }
-      ]
-    },
-    {
-      label: 'Module 4',
-      subLabel: 'Analyst & The Close Room',
-      color: '#f2c56b',
-      slidesFile: 'module-4-slides.html',
-      lessons: [
-        { file: '12-meet-analyst.html',            title: 'Meet Analyst' },
-        { file: '13-analyst-on-finance-data.html', title: 'Analyst on Finance Data' },
-        { file: '14-choosing-your-copilot.html',   title: 'Choosing Your Copilot' },
-        { file: '15-make-it-stick.html',           title: 'Make It Stick' },
-        { file: '16-the-close-room.html',          title: 'The Close Room', exercise: true }
+        { file: 'governance-01-overview.html', title: 'Governance Overview', exercise: true }
       ]
     }
   ];
