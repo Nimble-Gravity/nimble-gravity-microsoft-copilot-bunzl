@@ -3667,7 +3667,8 @@ section.hero .dev-chip {
 .reflect-hint { font-size: 13px; color: var(--slatel); line-height: 1.6; }
 
 /* Training index — module cards */
-.module-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; align-items: stretch; }
+.module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; align-items: stretch; }
+@media (max-width: 900px) { .module-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 768px) { .module-grid { grid-template-columns: 1fr; } }
 .module-card {
   background: var(--white);
