@@ -142,6 +142,12 @@ Phase B/C/D copy locks it in at scale (flagged again in §5).
   sources Copilot cites, and which agent is selected. Explicit web/public-source answers come
   from asking for them, not a mode switch. Checking citations before trusting an answer is the
   cross-cutting habit.
+- **Excel — quick orientation on an unfamiliar workbook** (freshly verified this pass, not
+  carried-forward): Copilot can summarize a workbook's contents, explain a formula in plain
+  language in place, and every AI-made change is recorded for traceability — a basic
+  orientation capability distinct from the deeper agentic milestone below. (techcommunity
+  microsoft.com/blog/microsoft365copilotblog, "What's New in Microsoft 365 Copilot | June
+  2026," and Microsoft's Excel Copilot documentation, both retrieved 2026-08-16.)
 - **Model choice (2026):** a GPT-class default model, with **Anthropic Claude models
   selectable** for certain experiences where an admin has enabled Anthropic as a subprocessor
   (see the EU Data Boundary section below) — treat exact model names/versions as provisional;
@@ -260,8 +266,6 @@ Phase B/C/D copy locks it in at scale (flagged again in §5).
   responses using saved memories and chat history, manageable on a dedicated settings page.
 - **Teams intelligent recap** (GA): captures meeting notes, speaker attribution, and action
   items automatically — ask for the recap instead of asking a colleague to retype their notes.
-- **Excel — quick orientation on an unfamiliar workbook**: Copilot can summarize a workbook,
-  explain a formula in plain language, or highlight what changed since a prior version.
 - **PowerPoint — outline-first drafting**: Copilot builds a stronger deck when given a
   structural outline first rather than being asked to generate a deck from a blank slide.
 - These facts were true as of the prior program's 2026-07-31 research pass and were not
