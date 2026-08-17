@@ -54,8 +54,17 @@
     foundations: {
       label: 'Foundations · M365 Copilot Essentials',
       questions: [
-        { q: 'What does an M365 Copilot Premium license add that free Copilot Chat does not?',
-          options: ['Nothing — they are the same product', 'Work-grounded Chat against your Microsoft Graph data, plus Copilot inside the M365 apps and the Researcher/Analyst agents', 'Only a different color theme'],
+        { q: 'What does the paid Copilot add-on give you that free Copilot Chat does not?',
+          options: ['Nothing — they are the same product', 'Work-grounded Chat via Microsoft Graph, plus Copilot inside the M365 apps, Copilot Search, and the Researcher/Analyst agents', 'A different color theme'],
+          answer: 1 },
+        { q: 'Which of the following is one of the five grounding signals Copilot actually uses to answer you?',
+          options: ['Whether your webcam is on', 'The files you attach or reference', 'How many browser tabs you have open'],
+          answer: 1 },
+        { q: 'Microsoft's four elements of a strong prompt are…',
+          options: ['Goal, Context, Expectations, Source', 'Persona, Task, Format, Tone', 'Who, What, When, Where'],
+          answer: 0 },
+        { q: 'What's the fastest way to locate a file when you don't remember its exact name?',
+          options: ['Browse every folder manually', 'Copilot Search — describe what the file is about, not its filename', 'Ask a colleague to email it to you again'],
           answer: 1 }
       ]
     },
