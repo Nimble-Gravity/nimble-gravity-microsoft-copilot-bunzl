@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The Copilot Landscape — Foundations</title>
+<link rel="stylesheet" href="../../styles/shared.css"/>
+</head>
+<body>
+<script src="../../footer.js"></script>
+<script src="../../nav.js"></script>
+<script src="../../training-sidebar.js"></script>
+<script src="../../progress-model.js"></script>
+<script src="../../interactive.js"></script>
+
+<div class="module-strip">
+  <span class="ms-label">Track</span>
+  <a href="foundations-01-the-copilot-landscape.html" class="ms-item active"><span class="ms-num">1</span>Foundations</a>
+  <span class="ms-arrow">›</span>
+  <a href="advanced-01-overview.html" class="ms-item upcoming"><span class="ms-num">2</span>Advanced</a>
+  <span class="ms-arrow">›</span>
+  <a href="governance-01-overview.html" class="ms-item upcoming"><span class="ms-num">3</span>Governance</a>
+</div>
+
+<div class="page-header" id="intro">
+  <div class="eyebrow">Foundations · Lesson 1 of 4</div>
+  <h1 class="title">The Copilot <em>Landscape</em></h1>
+  <p class="subtitle">You already have a Copilot license. This lesson is the map: what's included in the free Copilot Chat every M365 subscriber gets, what the paid Copilot add-on layers on top of it, and how "grounding" actually works — so you know exactly what Copilot can and can't see before you ask it anything.</p>
+  <div class="header-phase">
+    <div class="header-phase-dot" style="background:var(--teal)"></div>
+    Foundations · 2 hours · virtual, recorded
+  </div>
+</div>
+
+<div class="section" id="two-tiers">
+  <div class="sec-eyebrow">01 — Two products, one name</div>
+  <h2 class="sec-title">Free Chat vs. the paid <em>add-on</em></h2>
+  <p class="sec-sub">"Copilot" means two different things at Bunzl, and knowing which one you have changes what you should expect from it.</p>
+
+  <div class="insight-grid" style="margin-top:28px;">
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">What everyone gets: Copilot Chat</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">Included free with your M365 subscription: web-grounded chat, enterprise data protection, file upload, Pages (shareable canvases from chat), and agents on a pay-as-you-go basis. This is a real, useful tool on its own — but it isn't grounded in your Bunzl work data by default.</p>
+    </div>
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">What the paid add-on adds</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">If you're in this session, you almost certainly have the paid Microsoft 365 Copilot add-on. It layers on <strong>work-grounded Chat</strong> (via Microsoft Graph — your mail, meetings, chats, and files), Copilot inside Word, Excel, PowerPoint, Outlook, and Teams, Copilot Search, the Researcher and Analyst reasoning agents, scheduled prompts, memory, and Notebooks.</p>
+    </div>
+  </div>
+
+  <div class="tip-trick" style="margin-top:32px;">
+    <div class="tip-trick-icon">💡</div>
+    <div class="tip-trick-copy">
+      <div class="tip-trick-label">Why this matters</div>
+      <p>A colleague on free Chat and a colleague on the paid add-on can ask the exact same question and get different answers — because only one of them is grounded in Bunzl's own mail, meetings, and files. If Copilot ever seems to "not know" something you'd expect it to, checking which surface you're on is the first thing to check, not the last.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="grounding">
+  <div class="sec-eyebrow">02 — What Copilot can see</div>
+  <h2 class="sec-title">Grounding is <em>signals</em>, not a switch</h2>
+  <p class="sec-sub">There's no simple "Work" or "Web" toggle. What Copilot actually uses to answer you comes from five signals working together.</p>
+
+  <div class="insight-grid" style="margin-top:28px;">
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">Work IQ</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">The Microsoft Graph context layer — your mail, meetings, chats, and files, plus any connected sources. Copilot only ever sees what you already have permission to see; it never surfaces a colleague's private file just because you asked about it.</p>
+    </div>
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">Your prompt</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">What you actually type shapes what Copilot looks for. A vague prompt gets a vague, loosely-grounded answer.</p>
+    </div>
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">Files you attach or reference</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">Attaching a file, or referencing it by name, tells Copilot exactly where to look — the single most reliable way to ground an answer in something specific.</p>
+    </div>
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">Sources it cites</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">A grounded answer shows you where it came from. If an answer has no citations, that's a signal to ask where the information is coming from before you trust it.</p>
+    </div>
+    <div class="insight-card">
+      <div class="sec-eyebrow" style="margin-bottom:6px;">Which agent is selected</div>
+      <p style="font-size:15px;color:var(--slate);line-height:1.65;margin:0;">Copilot Chat, Copilot in an app, and a dedicated agent are grounded differently by design — the surface you're on is itself a signal.</p>
+    </div>
+  </div>
+
+  <div class="tip-trick" style="margin-top:32px;">
+    <div class="tip-trick-icon">🔎</div>
+    <div class="tip-trick-copy">
+      <div class="tip-trick-label">The habit that carries across everything</div>
+      <p>Check citations before you trust an answer. It takes five seconds and it's the single habit every other lesson in this program builds on — whether you're drafting a memo in Lesson 2 or double-checking a number in the take-home capstone.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page-footer"></div>
+</body>
+</html>
