@@ -258,6 +258,12 @@ Phase B/C/D copy locks it in at scale (flagged again in §5).
 - **Copilot Search** (GA, no extra cost): semantic search across Graph plus 100+ connectors,
   answered by Copilot. **Copilot Memory** (GA rollout complete ~mid-2026): personalizes
   responses using saved memories and chat history, manageable on a dedicated settings page.
+- **Teams intelligent recap** (GA): captures meeting notes, speaker attribution, and action
+  items automatically — ask for the recap instead of asking a colleague to retype their notes.
+- **Excel — quick orientation on an unfamiliar workbook**: Copilot can summarize a workbook,
+  explain a formula in plain language, or highlight what changed since a prior version.
+- **PowerPoint — outline-first drafting**: Copilot builds a stronger deck when given a
+  structural outline first rather than being asked to generate a deck from a blank slide.
 - These facts were true as of the prior program's 2026-07-31 research pass and were not
   contradicted by this pass's searches, but were not independently re-verified against a fresh
   primary source in this pass either — treat as **carried-forward, not freshly confirmed**, and
