@@ -12,9 +12,19 @@
       subLabel: 'M365 Copilot Essentials',
       color: '#2f6b66',
       navColor: '#4f9990',
-      filePrefix: ['foundations-01-'],
-      pages: ['foundations-01-overview'],
-      labels: ['Foundations Overview']
+      filePrefix: ['foundations-01-', 'foundations-02-', 'foundations-03-', 'foundations-04-'],
+      pages: [
+        'foundations-01-the-copilot-landscape',
+        'foundations-02-prompting-everyday-chat',
+        'foundations-03-copilot-in-the-apps',
+        'foundations-04-practice-and-check'
+      ],
+      labels: [
+        'The Copilot Landscape',
+        'Prompting & Everyday Chat',
+        'Copilot in the Apps',
+        'Practice & Knowledge Check'
+      ]
     },
     {
       id: 'advanced',

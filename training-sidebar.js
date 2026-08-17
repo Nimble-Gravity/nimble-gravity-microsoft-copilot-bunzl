@@ -8,7 +8,10 @@
       color: '#4f9990',
       slidesFile: 'foundations-slides.html',
       lessons: [
-        { file: 'foundations-01-overview.html', title: 'Foundations Overview', exercise: true }
+        { file: 'foundations-01-the-copilot-landscape.html', title: 'The Copilot Landscape' },
+        { file: 'foundations-02-prompting-everyday-chat.html', title: 'Prompting & Everyday Chat' },
+        { file: 'foundations-03-copilot-in-the-apps.html', title: 'Copilot in the Apps' },
+        { file: 'foundations-04-practice-and-check.html', title: 'Practice & Knowledge Check', exercise: true }
       ]
     },
     {
