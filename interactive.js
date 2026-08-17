@@ -60,10 +60,10 @@
         { q: 'Which of the following is one of the five grounding signals Copilot actually uses to answer you?',
           options: ['Whether your webcam is on', 'The files you attach or reference', 'How many browser tabs you have open'],
           answer: 1 },
-        { q: 'Microsoft's four elements of a strong prompt are…',
+        { q: 'Microsoft’s four elements of a strong prompt are…',
           options: ['Goal, Context, Expectations, Source', 'Persona, Task, Format, Tone', 'Who, What, When, Where'],
           answer: 0 },
-        { q: 'What's the fastest way to locate a file when you don't remember its exact name?',
+        { q: 'What’s the fastest way to locate a file when you don’t remember its exact name?',
           options: ['Browse every folder manually', 'Copilot Search — describe what the file is about, not its filename', 'Ask a colleague to email it to you again'],
           answer: 1 }
       ]
