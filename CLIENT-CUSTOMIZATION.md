@@ -47,7 +47,7 @@ Add new slots as the engagement needs them; record each one in this table.
 
 ## Other swappable assets
 
-- **Lab data** (`assets/lab-data/`): as of Phase A this is a mix — 3 new generic Bunzl `.xlsx`/`.pptx`/`.docx` files (from `tools/sample-files/`, not yet used by any lab) alongside the legacy B&B CSVs that `escape-room/`'s and `control-room/`'s *current* puzzles still read. ⚠️ Those two apps' unlock codes are **derived from the legacy CSVs**, not the new Bunzl files — re-derive codes and re-run `node tools/generate-hashes.mjs` in `escape-room/`, `control-room/`, and `governance-room/` after any change to either dataset.
+- **Lab data** (`assets/lab-data/`): as of Phase B this is a mix — 3 real, generic Bunzl `.xlsx`/`.pptx`/`.docx` files (from `tools/sample-files/`) alongside the legacy B&B CSVs. `escape-room/` ("The Loading Dock," Foundations) is fully retextured — its unlock codes are **derived from the 3 Bunzl sample files**, answer key in `escape-room/lab-files/loading-dock-briefing.md`. `control-room/` (Advanced) is still the prior engagement's puzzles, with codes **derived from the legacy CSVs** — that's Phase C content work. ⚠️ Re-derive codes and re-run `node tools/generate-hashes.mjs` in whichever app's underlying dataset changes.
 - **Discovery checklist** (`pages/customization/discovery-checklist.html`): run before the engagement; its answers drive which slots get filled.
 - **Footer kicker / hero copy** (`footer.js`, `index.html`): light brand framing only.
 
