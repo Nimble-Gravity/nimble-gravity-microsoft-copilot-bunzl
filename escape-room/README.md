@@ -45,7 +45,7 @@ js/
   leaderboard.js      backend adapters: Supabase (shared) / localStorage (fallback)
   admin.js            facilitator view logic
   scene/              Three.js vault: textures.js (procedural), scene.js (geometry+loop)
-lab-files/            loading-dock-briefing.md — the player briefing handout
+lab-files/            loading-dock-briefing.md — FACILITATOR-ONLY answer key, do not distribute
 tools/generate-hashes.mjs   turns rooms.source.json into rooms.json
 ```
 
@@ -198,10 +198,12 @@ public repos.
 1. Confirm the codes in `config/rooms.source.json` still match the data in
    `../assets/lab-data/` (see the answer key above); run
    `node tools/generate-hashes.mjs`.
-2. Distribute `lab-files/loading-dock-briefing.md` plus the 3 sample files it
-   names (`bunzl-quarterly-budget-review.xlsx`, `bunzl-business-review.pptx`,
-   `bunzl-team-update-memo.docx` from `../assets/lab-data/`) via your usual
-   channel — these files are already public, no OneDrive copy-step required.
+2. Point players at `../assets/lab-data/bunzl-quarterly-budget-review.xlsx`,
+   `bunzl-business-review.pptx`, and `bunzl-team-update-memo.docx` — already
+   public, no OneDrive copy-step required. Do NOT distribute
+   `lab-files/loading-dock-briefing.md`; it contains the answer key. Each
+   station's narrative and lab steps render in-game — players don't need a
+   separate briefing document, only the 3 sample files.
    All data is synthetic; no real Bunzl clients, deals, or figures.
 3. Configure (or skip) Supabase in `config/app-config.js`; set `adminKey`.
 4. Deploy; open `admin.html` on the facilitator machine; teams open the root
