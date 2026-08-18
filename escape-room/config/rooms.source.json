@@ -1,100 +1,91 @@
 {
-  "workshopTitle": "Module 2 Challenge: The Variance Vault",
-  "scenario": "Month-end. Four sealed findings are buried in the June data — a windfall, a lease, an overrun, and a slide. Use Copilot — Chat, Excel, or the Analyst agent — to dig each one out of the numbers and unlock the vault before the close call in 40 minutes.",
-  "timeLimitMinutes": 40,
-  "hintPenaltySeconds": 120,
+  "workshopTitle": "Foundations Track Capstone: The Loading Dock",
+  "scenario": "A shipment just came in and the paperwork doesn't add up. Use Copilot — Chat, Excel, PowerPoint, or Word — to work through four stations on the Bunzl sample files and get the dock doors open.",
+  "timeLimitMinutes": 30,
+  "hintPenaltySeconds": 90,
   "rooms": [
     {
       "id": "room-1",
-      "title": "The Windfall",
-      "narrative": "Something big landed in March and nobody flagged it. One profit center's contingent commissions came in at several times budget — a carrier profit-share windfall buried in 500 rows of P&L. Find the number and the first lock opens.",
+      "title": "The Intake Ledger",
+      "narrative": "The budget workbook just arrived on the dock. Every segment shipped something different than planned this quarter — find the one that came in furthest ahead.",
       "labSteps": [
-        "Open 'profit-center-pnl.csv' from your OneDrive lab-data copy — Excel with Copilot works; the Analyst agent is faster for a sweep across every profit center.",
-        "Build a four-element prompt: Goal (find the March contingent-commission outlier), Context (budget vs actual by profit center, insurance brokerage P&L), Expectations (a table of profit center, March contingent budget, actual, and variance, sorted by variance), Source (this file).",
-        "Filter to account = 'Contingent commissions' and month = 2026-03, then compare actual_usd to budget_usd for each profit center.",
-        "One profit center's actual is more than triple its budget. Verify before you trust it: open the underlying row and read the raw actual_usd value yourself.",
-        "The unlock code is that profit center's March contingent-commission ACTUAL in $ thousands — digits only, no commas, no dollar sign. Example format: 425"
+        "Open 'bunzl-quarterly-budget-review.xlsx' from the sample files — Excel with Copilot works, or ask Copilot Chat with the file attached.",
+        "Build a four-element prompt: Goal (find the segment with the largest positive variance, actual minus budget), Context (this is a budget vs. actual sheet by business segment), Expectations (name the segment and the variance in $ thousands), Source (this file).",
+        "Verify before you trust it: open the Budget vs Actual sheet yourself and check the actual and budget columns for the segment Copilot names.",
+        "The unlock code is that segment's variance in $ thousands — digits only, no sign, no commas. Example format: 42"
       ],
-      "codePlaintext": "336",
+      "codePlaintext": "185",
       "codeHash": "GENERATE_WITH_SCRIPT",
       "hints": [
-        "Don't scan row by row — ask for variance (actual minus budget) on the contingent-commissions line only, March only, ranked. The windfall is not subtle; it dwarfs every other contingent variance that month.",
-        "It's a Florida retail profit center on the Gulf side of the state. Its March contingent budget was $94,500 and the actual came in at a bit more than three and a half times that. Enter the actual, converted to thousands."
+        "Don't scan row by row — ask Copilot to compute actual minus budget for every segment and rank them.",
+        "It's the largest segment in the sheet by budget, and it also has the largest dollar variance — not just the largest percentage one."
       ],
       "skillsTaught": [
-        "Filtering and ranking a P&L with Copilot instead of scanning it",
+        "Grounding a prompt in an attached Excel file",
         "The four-element prompt: Goal, Context, Expectations, Source",
         "Verifying a Copilot answer against the underlying rows"
       ]
     },
     {
       "id": "room-2",
-      "title": "The Lease",
-      "narrative": "May's occupancy line hides a one-time hit: a lease buyout that landed in a single profit center and blew straight past budget. The controller wants the overage — not the total, the overage. Compute it and the second lock opens.",
+      "title": "The Route Sheet",
+      "narrative": "A slide deck was left at the loading dock with no cover note. Figure out what it is and what it's telling the next shift to do.",
       "labSteps": [
-        "Stay in 'profit-center-pnl.csv'. This time the account is 'Occupancy' and the month is 2026-05.",
-        "Prompt with the same four elements — but change the Expectations: you want actual minus budget per profit center, not the actual itself. Copilot answers the question you ask, so ask for the variance.",
-        "In Excel, a pivot of May occupancy with a variance column works too — ask Copilot to add the calculated column for you.",
-        "One profit center's May occupancy overage is a suspiciously round number — the signature of a one-time contractual payment, not rent drift.",
-        "The unlock code is that overage (actual minus budget) in $ thousands — digits only. Example format: 95"
+        "Open 'bunzl-business-review.pptx' from the sample files.",
+        "Ask Copilot how many slides are in the deck, and what the title of the last slide is.",
+        "The unlock code is the total slide count immediately followed by the last slide's title with no spaces, all uppercase. Example format: 3AGENDA"
       ],
-      "codePlaintext": "180",
+      "codePlaintext": "4NEXTSTEPS",
       "codeHash": "GENERATE_WITH_SCRIPT",
       "hints": [
-        "If your candidate overage isn't a clean round number, you've computed the actual, not the variance. Subtract the budget. Every other profit center's occupancy variance that month is small and messy; the hit stands alone.",
-        "It's the Denver retail office. May occupancy actual was $234,000 against a $54,000 budget — enter the difference, in thousands."
+        "Ask Copilot to summarize the deck slide by slide if the count doesn't come back right the first time.",
+        "The deck ends on a slide about what happens after this review, not the review itself."
       ],
       "skillsTaught": [
-        "Asking for the derived number (variance), not the raw one",
-        "Adding calculated columns with Excel Copilot",
-        "Recognizing one-time items by their shape"
+        "Asking Copilot to navigate and summarize a PowerPoint deck",
+        "Getting a structured, checkable answer instead of a loose summary"
       ]
     },
     {
       "id": "room-3",
-      "title": "The Overrun",
-      "narrative": "Most variances are noise. This one is a pattern: a single profit center whose compensation line runs hot against budget every single month, January through June — roughly nine percent over, every time. Patterns need an id, not an anecdote. Name it and the third lock opens.",
+      "title": "The Delivery Note",
+      "narrative": "A short memo came with the shipment. Someone needs to know which segments it says are running ahead of plan before the next station opens.",
       "labSteps": [
-        "Still 'profit-center-pnl.csv' — account = 'Compensation', all six months this time.",
-        "This is a consistency question, not an outlier question, so tell Copilot that in the Goal: find the profit center over budget on compensation in EVERY month Jan–Jun 2026, not the one with the biggest single miss.",
-        "Set Expectations to a month-by-month grid: profit centers as rows, months as columns, percent over/under budget in the cells. The Analyst agent handles this pivot well.",
-        "Verify like a reviewer: for your candidate, check all six months individually — one month under budget disqualifies it.",
-        "The unlock code is that profit center's id, exactly as it appears in the file, hyphen included. Example format: PC-999"
+        "Open 'bunzl-team-update-memo.docx' from the sample files.",
+        "Ask Copilot to summarize which segments the memo says are ahead of plan, and which are under.",
+        "Count how many segments the memo names in total across both groups (ahead + under).",
+        "The unlock code is that total count, immediately followed by the word SEGMENTS, no space. Example format: 3SEGMENTS"
       ],
-      "codePlaintext": "PC-402",
+      "codePlaintext": "4SEGMENTS",
       "codeHash": "GENERATE_WITH_SCRIPT",
       "hints": [
-        "Ask for the count of over-budget months per profit center on the compensation line — only one scores six out of six. Big single-month misses elsewhere are decoys; consistency is the tell.",
-        "It's the Manhattan retail office — compensation runs about nine percent over budget every month, roughly $650k over for the half. Enter its profit-center id with the hyphen."
+        "The memo names two segments as ahead of plan and two as under — add them together.",
+        "Read the first real paragraph after the italic disclaimer line."
       ],
       "skillsTaught": [
-        "Framing consistency questions vs outlier questions",
-        "Month-by-month pivots with the Analyst agent",
-        "Disqualifying candidates with a verification pass"
+        "Summarizing a Word document with Copilot",
+        "Turning a loose summary into a specific, countable fact"
       ]
     },
     {
       "id": "room-4",
-      "title": "The Slide",
-      "narrative": "The last finding isn't one number — it's a headcount. June core commissions are softening across the book, and the CFO wants to know exactly how many profit centers finished the month below budget. Count carefully: the vault rejects sloppy denominators.",
+      "title": "The Missing Manifest",
+      "narrative": "The memo from the last station said its piece — but the dock foreman taught you in Lesson 1 to check citations before trusting a summary. Cross-check the memo against the budget workbook. One segment is over budget in the workbook but never shows up in the memo's summary at all.",
       "labSteps": [
-        "Last pass at 'profit-center-pnl.csv' — account = 'Core commissions', month = 2026-06 only.",
-        "Count the profit centers whose June ACTUAL core commissions are below their June BUDGET. Only count rows where a June budget exists — the agency acquired mid-period has actuals but no budget, and it must not be in your count.",
-        "Spell that exclusion out in the prompt's Context; Copilot won't guess your denominator rules. Blank is not zero.",
-        "Verify: ask for the list of qualifying profit centers by name, not just the count, and spot-check two of them against the raw rows.",
-        "Corroborate with 'flash-comments.csv' — the June revenue_comments for each profit center on your list should read as under budget. A row on your list whose commentary reads over budget means you miscounted.",
-        "The unlock code is the count immediately followed by the word UNDER, no space. Example format: 7UNDER"
+        "You'll need both files open: 'bunzl-team-update-memo.docx' and 'bunzl-quarterly-budget-review.xlsx'.",
+        "List every segment the memo mentions (ahead or under). Then list every segment in the workbook whose actual is greater than its budget.",
+        "Find the segment that appears in the second list but not the first — the one the memo simply left out.",
+        "The unlock code is that segment's name in all uppercase, no spaces, immediately followed by its variance in $ thousands. Example format: RETAIL90"
       ],
-      "codePlaintext": "11UNDER",
+      "codePlaintext": "HEALTHCARE75",
       "codeHash": "GENERATE_WITH_SCRIPT",
       "hints": [
-        "If your count is one too high, you counted a profit center with an empty June budget cell — the mid-period acquisition. A missing budget means the row is excluded, not that it's a zero budget beaten by any actual.",
-        "With the acquisition excluded, the count is an odd number between ten and twelve. Append the word from the code format, all caps, no space."
+        "The memo names four segments total across ahead-of-plan and under-plan. The workbook has five segments. One of the five never appears in the memo at all.",
+        "It's the smallest segment by budget in the workbook, and its actual beat its budget by $75 thousand."
       ],
       "skillsTaught": [
-        "Making denominator rules explicit in the prompt",
-        "Handling missing data — blank is not zero",
-        "Asking for the list behind a count before trusting it"
+        "The single most important habit from this track: verify a Copilot summary against its source before you trust it",
+        "Cross-referencing two different file types (a document and a workbook) on the same underlying facts"
       ]
     }
   ]

@@ -1,10 +1,11 @@
-# The Variance Vault — Virtual Escape Room (Module 2 Challenge)
+# The Loading Dock — Virtual Escape Room (Foundations Track Capstone)
 
-A web-based escape room that gates the Module 2 take-home challenge for the
-M365 Copilot Advanced Workshop (Brown & Brown finance). Teams dig four planted
-findings out of the synthetic June finance data using Copilot — Chat, Excel, or
-the Analyst agent; each finding, formatted per the briefing's rules, is the
-unlock code for the next room. Four rooms, one 40-minute timer, a live
+A web-based escape room that gates the Foundations track's take-home capstone
+for the Nimble Gravity × Bunzl M365 Copilot workshop. Teams work through four
+stations against the 3 generic Bunzl sample files (a budget workbook, a
+business-review deck, and a team-update memo) using Copilot — Chat, Excel,
+PowerPoint, or Word; each answer, formatted per the briefing's rules, is the
+unlock code for the next room. Four rooms, one 30-minute timer, a live
 leaderboard, and a facilitator view.
 
 No build step, no framework: vanilla ES modules + Three.js from a CDN.
@@ -44,26 +45,28 @@ js/
   leaderboard.js      backend adapters: Supabase (shared) / localStorage (fallback)
   admin.js            facilitator view logic
   scene/              Three.js vault: textures.js (procedural), scene.js (geometry+loop)
-lab-files/            variance-vault-briefing.md — the player briefing handout
+lab-files/            loading-dock-briefing.md — the player briefing handout
 tools/generate-hashes.mjs   turns rooms.source.json into rooms.json
 ```
 
 ## The four rooms — answer key (facilitators only)
 
-All codes are **derived from `../assets/lab-data/profit-center-pnl.csv`** (the
-seeded synthetic dataset). If that file is regenerated or edited, re-derive
-every code below before a session, then re-run the hash generator.
+All codes are **derived from the 3 generic Bunzl sample files in
+`../assets/lab-data/`** (`bunzl-quarterly-budget-review.xlsx`,
+`bunzl-business-review.pptx`, `bunzl-team-update-memo.docx`) via
+`tools/sample-files/generate.py`. If that generator is regenerated or edited,
+re-derive every code below before a session, then re-run the hash generator.
 
 | # | Room | Code | Derivation |
 |---|---|---|---|
-| 1 | The Windfall | `336` | PC-103 "Tampa Bay Retail", March 2026 contingent commissions: actual $336,000 vs $94,500 budget. Code = actual in $ thousands. |
-| 2 | The Lease | `180` | PC-204 "Denver Retail", May 2026 occupancy: actual $234,000 vs $54,000 budget = exactly $180,000 over. Code = the overage in $ thousands. |
-| 3 | The Overrun | `PC-402` | PC-402 "Manhattan Retail" compensation runs ~9% over budget in **every** month Jan–Jun (~$651k over for H1). Code = the profit-center id. |
-| 4 | The Slide | `11UNDER` | Exactly 11 profit centers have June actual core commissions below June budget, counting **only rows where a June budget exists** (the mid-period acquisition has no budget and is excluded). Code = count + `UNDER`. |
+| 1 | The Intake Ledger | `185` | Grocery & Foodservice's variance (actual 4385 − budget 4200), the largest positive variance across all 5 segments in the budget workbook. |
+| 2 | The Route Sheet | `4NEXTSTEPS` | The deck has 4 slides; the last slide's title is "Next Steps". |
+| 3 | The Delivery Note | `4SEGMENTS` | The memo names 4 segments total: Grocery & Foodservice + Cleaning & Hygiene (ahead of plan) + Safety + Retail (under). |
+| 4 | The Missing Manifest | `HEALTHCARE75` | Healthcare is over budget (+75) in the workbook but is the one segment the memo's summary never mentions — the deliberate "verify before you trust a summary" puzzle. |
 
 Codes are case- and whitespace-insensitive (normalized to `UPPERCASE`,
-whitespace stripped) on both sides of the comparison — hyphens are preserved,
-so `pc-402` works but `PC402` does not.
+whitespace stripped) on both sides of the comparison — hyphens are preserved
+if a code ever contains one, though none of the current 4 do.
 
 ## How rooms work / adding or editing rooms
 
@@ -195,11 +198,11 @@ public repos.
 1. Confirm the codes in `config/rooms.source.json` still match the data in
    `../assets/lab-data/` (see the answer key above); run
    `node tools/generate-hashes.mjs`.
-2. Distribute `lab-files/variance-vault-briefing.md` plus the two datasets it
-   names (`profit-center-pnl.csv`, `carrier-commission-statements.csv` from
-   `../assets/lab-data/`) via your usual channel — attendees copy them into
-   their own OneDrive so Copilot can reach them. All data is synthetic; no
-   real Brown & Brown clients, carriers, or figures.
+2. Distribute `lab-files/loading-dock-briefing.md` plus the 3 sample files it
+   names (`bunzl-quarterly-budget-review.xlsx`, `bunzl-business-review.pptx`,
+   `bunzl-team-update-memo.docx` from `../assets/lab-data/`) via your usual
+   channel — these files are already public, no OneDrive copy-step required.
+   All data is synthetic; no real Bunzl clients, deals, or figures.
 3. Configure (or skip) Supabase in `config/app-config.js`; set `adminKey`.
 4. Deploy; open `admin.html` on the facilitator machine; teams open the root
    URL, enter a team name, and the clock starts.
