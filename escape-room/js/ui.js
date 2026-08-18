@@ -130,7 +130,7 @@ export function initUI({ rooms, hintPenalty, onStart, onSubmitCode, onTakeHint, 
       div.className = 'overlay';
       div.innerHTML =
         `<div class="overlay-card"><div class="eyebrow">Configuration error</div>` +
-        `<h1>Vault <em>offline</em></h1><p>${esc(msg)}</p></div>`;
+        `<h1>Dock <em>offline</em></h1><p>${esc(msg)}</p></div>`;
       document.body.appendChild(div);
     },
   };
@@ -144,6 +144,6 @@ export function showBootError(msg) {
   div.className = 'overlay';
   div.innerHTML =
     `<div class="overlay-card"><div class="eyebrow">Configuration error</div>` +
-    `<h1>Vault <em>offline</em></h1><p>${esc2(msg)}</p></div>`;
+    `<h1>Dock <em>offline</em></h1><p>${esc2(msg)}</p></div>`;
   document.body.appendChild(div);
 }
