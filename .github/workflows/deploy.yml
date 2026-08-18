@@ -28,16 +28,24 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Build deploy directory (exclude internal planning docs)
+      - name: Build deploy directory (exclude internal planning docs and escape-room answer keys)
         run: |
           mkdir -p _site
-          rsync -a --exclude='.git' --exclude='_site' --exclude='docs' . _site/
+          rsync -a \
+            --exclude='.git' \
+            --exclude='_site' \
+            --exclude='docs' \
+            --exclude='rooms.source.json' \
+            --exclude='lab-files' \
+            . _site/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Everything except docs/ (internal specs/plans — not part of the
-          # live site, and some contain escape-room answer keys inline)
+          # Everything except: docs/ (internal specs/plans — not part of the
+          # live site), and each game app's rooms.source.json + lab-files/
+          # (contain plaintext unlock codes / the facilitator answer key —
+          # the client-side game only ever reads the hashed rooms.json).
           path: '_site'
 
       - name: Deploy to GitHub Pages
